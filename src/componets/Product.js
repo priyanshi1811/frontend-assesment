@@ -12,7 +12,7 @@ const ProductSlider = () => {
   const [slider, setSlider] = useState(null);
   useEffect(() => {
     axios
-      .get(`${baseurl}/products`)
+      .get(`${baseurl}/products`, { withCredentials: false })
       .then((response) => {
         setProducts(response.data);
         setAllProducts(response.data);
