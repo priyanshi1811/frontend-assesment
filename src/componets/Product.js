@@ -27,7 +27,7 @@ const ProductSlider = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
     arrows: true, // Show arrow keys for navigation
@@ -64,15 +64,18 @@ const ProductSlider = () => {
   };
 
   return (
-    <div className="container mx-auto p-5">
-      <h1 className=" text-[90px] font-syne ">New Products</h1>
-      <hr className="w-[45%] mb-12 p-1 rounded bg-[#000]" />
+    <div className="p-4 md:w-full overflow-x-hidden">
+      <h1 className=" md:text-[90px] text-[40px] font-syne ">New Products</h1>
+      <hr className="md:w-[45%] w-[80%] mb-12 p-1 rounded bg-[#000]" />
 
-      <div className="flex flex-row justify-between w-full">
-        <div className="w-[20%] flex flex-col text-[18px] font-syne font-600 flex items-center">
-          <div className="flex flex-col corsor-pointer ">
+      <div className="flex md:flex-row md:justify-between flex-col overflow-x-hidden">
+        <div className="md:w-[20%] flex flex-col md:text-[18px] text-[10px] font-syne font-600 flex items-center">
+          <div className="flex md:flex-col corsor-pointer ">
             {category.map((item, index) => (
-              <div className="hover:scale-110 hover:font-800 mt-2" key={index}>
+              <div
+                className="hover:scale-110 hover:font-800 mt-2 ml-2 md:ml-0"
+                key={index}
+              >
                 <text
                   className=""
                   onClick={() => {
@@ -85,10 +88,10 @@ const ProductSlider = () => {
             ))}
           </div>
         </div>
-        <div className=" w-[80%] flex flex-col">
+        <div className="flex flex-col md:w-[80%] overflow-x-hidden">
           <Slider {...sliderSettings} ref={(slider) => setSlider(slider)}>
             {products.map((product, index) => (
-              <div key={index} className="product-slide">
+              <div key={index} className="product-slide m">
                 <div className="product-card">
                   <div className="items-center flex justify-center m-3">
                     <img

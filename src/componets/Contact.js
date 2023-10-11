@@ -45,21 +45,21 @@ const Contact = () => {
 
   return (
     <div
-      className="flex flex-col bg-[#000] font-syne text-white w-full"
+      className="md:flex flex-col bg-[#000] font-syne text-white md:w-full"
       style={{ backgroundImage: `url(${mapbg})` }}
     >
-      <div className="flex mt-10 justify-around w-full">
+      <div className="md:flex m-10 justify-around md:w-full">
         <div className="text-[#626262]">
           <p className="text-[26px] font-600 font-syne">Newslleter</p>
           <p className="text-[18px] font-sans">
             Get news about articles and updates <br /> in your inbox.
           </p>
         </div>
-        <div className="mr-20 ">
-          <form className="w-full">
-            <div className="mb-4 w-full">
+        <div className="md:mr-20">
+          <form className="md:w-full">
+            <div className="mb-4 md:w-full">
               <input
-                className={`font-sans border-b bg-transparent sm:w-72 sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 px-2 focus:outline-none" ${
+                className={`font-sans border-b bg-transparent sm:w-72 w-[75%] sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 px-2 focus:outline-none" ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 }`}
                 type="text"
@@ -77,7 +77,7 @@ const Contact = () => {
             </div>
             <div className="mb-4">
               <input
-                className={`font-sans border-b bg-transparent sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 px-2 focus:outline-none" ${
+                className={`font-sans border-b bg-transparent sm:w-72 w-[75%] sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 px-2 focus:outline-none" ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 type="email"
@@ -94,7 +94,7 @@ const Contact = () => {
             </div>
             <div className="mb-6">
               <input
-                className={`font-sans bg-transparent border-b sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 px-2 focus:outline-none"${
+               className={`font-sans border-b bg-transparent sm:w-72 w-[75%] sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 px-2 focus:outline-none" ${
                   errors.message ? "border-red-500" : "border-gray-300"
                 }`}
                 placeholder="Message"
@@ -110,7 +110,7 @@ const Contact = () => {
             </div>
             <div className="text-center">
               <button
-                className="font-sans font absolute text-[16px] w-[10%] h-[23%] text-[#F07E15] border-[#F07E15] border font-bold py-2 px-4 rounded-full focus:outline-none hover:bg-white-600"
+                className="font-sans font absolute text-[16px] md:w-[10%] md:h-[23%] w-[20%] h-[11%] text-[#F07E15] border-[#F07E15] border font-bold py-2 px-4 rounded-full focus:outline-none hover:bg-white-600"
                 type="submit"
                 onClick={handleSubmit}
               >
@@ -120,7 +120,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <div className="flex flex-col ml-20 text-[#fff] text-[120px] font-syne font-[800] ">
+      <div className="flex flex-col md:ml-20 m-10 mb-0 text-[#fff] md:text-[120px] text-[55px] font-syne font-[800] ">
         <p>
           GET <br /> IN TOUCH
         </p>

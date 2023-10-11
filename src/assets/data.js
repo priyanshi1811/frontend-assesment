@@ -1,38 +1,22 @@
-export const data = [
+export const navbar = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
   {
-    url: "https://source.unsplash.com/random/1920x1080/?wallpaper,landscape",
-    title: "titanic",
-    description:
-      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ",
+    name: "Our Products",
+    id: "product",
+    child: [
+      { name: "Product 1", id: "p1" },
+      { name: "Product 2", id: "p2" },
+      { name: "Product 3", id: "p3" },
+      { name: "Product 4", id: "p4" },
+    ],
   },
-  {
-    url: "https://source.unsplash.com/random/1920x1080/?wallpaper,landscape",
-    title: "titanic",
-    description:
-      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ",
-  },
-  {
-    url: "https://source.unsplash.com/random/1920x1080/?wallpaper,landscape",
-    title: "titanic",
-    description:
-      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ",
-  },
-  {
-    url: "https://source.unsplash.com/random/1920x1080/?wallpaper,landscape",
-    title: "titanic",
-    description:
-      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ",
-  },
-  {
-    url: "https://source.unsplash.com/random/1920x1080/?wallpaper,landscape",
-    title: "titanic",
-    description:
-      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ",
-  },
-  {
-    url: "https://source.unsplash.com/random/1920x1080/?wallpaper,landscape",
-    title: "titanic",
-    description:
-      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available. ",
-  },
+  { name: "Contact Us", id: "contact" },
+];
+
+export const mob_navbar = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Our Products", id: "product" },
+  { name: "Contact Us", id: "contact" },
 ];
