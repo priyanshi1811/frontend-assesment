@@ -5,23 +5,29 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import "../css/styles.css";
 import { baseurl } from "../constant";
+import { Rings } from "react-loader-spinner";
 
 const ProductSlider = () => {
   const [products, setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [slider, setSlider] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loader, setLoader] = useState(true);
+  const [err, setErr] = useState("");
   useEffect(() => {
     axios
       .get(`${baseurl}/products`, { withCredentials: false })
       .then((response) => {
         setProducts(response.data);
         setAllProducts(response.data);
+        setLoader(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setErr(error);
+        setLoader(false);
       });
   }, []);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const sliderSettings = {
     dots: false,
@@ -89,52 +95,73 @@ const ProductSlider = () => {
           </div>
         </div>
         <div className="flex flex-col md:w-[80%] overflow-x-hidden">
-          <Slider {...sliderSettings} ref={(slider) => setSlider(slider)}>
-            {products.map((product, index) => (
-              <div key={index} className="product-slide m">
-                <div className="product-card">
-                  <div className="items-center flex justify-center m-3">
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className=" product-image"
-                      style={{ width: "200px", height: "200px" }}
-                    />
+          {loader ? (
+            <div className="flex justify-center mt-4">
+              <Rings
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+            </div>
+          ) : (
+            <>
+              <Slider {...sliderSettings} ref={(slider) => setSlider(slider)}>
+                {products.map((product, index) => (
+                  <div key={index} className="product-slide m">
+                    <div className="product-card">
+                      <div className="items-center flex justify-center m-3">
+                        <img
+                          src={product.image}
+                          alt={product.title}
+                          className=" product-image"
+                          style={{ width: "200px", height: "200px" }}
+                        />
+                      </div>
+                      <h2 className="product-title">
+                        {product.title.length < 20
+                          ? product.title
+                          : product.title.slice(0, 20) + "..."}
+                      </h2>
+                      <p className="product-description">
+                        {product.description.length < 100
+                          ? product.description
+                          : product.description.slice(0, 100) + "..."}
+                      </p>
+                      <span className="text-blue-600 font-semibold">
+                        ${product.price}
+                      </span>
+                      <span className="text-gray-600 line-through ml-2">
+                        ${(product.price * 1.2).toFixed(2)}
+                      </span>
+                    </div>
                   </div>
-                  <h2 className="product-title">
-                    {product.title.length < 20
-                      ? product.title
-                      : product.title.slice(0, 20) + "..."}
-                  </h2>
-                  <p className="product-description">
-                    {product.description.length < 100
-                      ? product.description
-                      : product.description.slice(0, 100) + "..."}
-                  </p>
-                  <span className="text-blue-600 font-semibold">
-                    ${product.price}
-                  </span>
-                  <span className="text-gray-600 line-through ml-2">
-                    ${(product.price * 1.2).toFixed(2)}
-                  </span>
-                </div>
+                ))}
+              </Slider>
+              <div className="text-center mb-4">
+                <button
+                  className="bg-gray-800 text-white px-4 py-2 rounded-md mr-2"
+                  onClick={prevSlide}
+                >
+                  Previous
+                </button>
+                <button
+                  className="bg-gray-800 text-white px-4 py-2 rounded-md"
+                  onClick={nextSlide}
+                >
+                  Next
+                </button>
               </div>
-            ))}
-          </Slider>
-          <div className="text-center mb-4">
-            <button
-              className="bg-gray-800 text-white px-4 py-2 rounded-md mr-2"
-              onClick={prevSlide}
-            >
-              Previous
-            </button>
-            <button
-              className="bg-gray-800 text-white px-4 py-2 rounded-md"
-              onClick={nextSlide}
-            >
-              Next
-            </button>
-          </div>
+            </>
+          )}
+          {err && (
+            <div className="flex justify-center mt-4">
+              Error Message : {err.message}
+            </div>
+          )}
         </div>
       </div>
     </div>
